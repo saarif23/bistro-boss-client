@@ -6,6 +6,9 @@ import OurShop from "../Pages/OurShop/OurShop";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Register/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layouts/Dashboard";
+import Cart from "../Pages/Dashborad/Cart";
+import Users from "../Components/DashboardComponents/Users";
 
 
 const Routes = createBrowserRouter([
@@ -40,7 +43,20 @@ const Routes = createBrowserRouter([
         ]
     },
     {
+        path: "/dashboard",
+        element: <PrivateRoute> <Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "cart",
+                element: <Cart></Cart>
+            },
 
+            // Admin route
+            {
+                path: "users",
+                element: <Users></Users>
+            }
+        ]
     }
 ])
 export default Routes;

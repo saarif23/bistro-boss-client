@@ -3,11 +3,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Provider/AuthProvider';
 import HorizontalLine from '../../Components/horizontalLine';
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebookF, FaGithub } from "react-icons/fa";
 import toast from 'react-hot-toast';
+import GoogleLogin from '../../Components/googleLogin';
 
 const Login = () => {
-    const { loginUser, googleSignIn } = useContext(AuthContext);
+    const { loginUser, } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/"
@@ -42,14 +43,14 @@ const Login = () => {
     }
 
 
-    const handleGoogleLogin = () => {
-        googleSignIn()
-            .then(() => {
-                toast.success("Google Sign In Success")
-                navigate(from, { replace: true });
-            })
-            .catch(error => console.log(error))
-    }
+    // const handleGoogleLogin = () => {
+    //     googleSignIn()
+    //         .then(() => {
+    //             toast.success("Google Sign In Success")
+    //             navigate(from, { replace: true });
+    //         })
+    //         .catch(error => console.log(error))
+    // }
 
 
     return (
@@ -96,7 +97,7 @@ const Login = () => {
                         <HorizontalLine chars={25} />Or <HorizontalLine chars={25} />
 
                         <div className='flex justify-center gap-8 pt-5'>
-                            <button onClick={handleGoogleLogin} className='border  p-3 border-black rounded-full'><FaGoogle></FaGoogle></button>
+                            <GoogleLogin></GoogleLogin>
                             <button className='border  p-3 border-black rounded-full'><FaFacebookF></FaFacebookF></button>
                             <button className='border  p-3 border-black rounded-full'><FaGithub></FaGithub></button>
                         </div>

@@ -3,10 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import HorizontalLine from "../../Components/horizontalLine";
+import GoogleLogin from "../../Components/googleLogin";
 
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
     const handleSubmit = e => {
@@ -16,18 +20,22 @@ const SignUp = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, photoURL, email, password }
-        console.log(user);
+        const user = { name, email }
         createUser(email, password)
             .then(result => {
                 toast.success("User Created Successfully")
                 console.log(result.user);
                 updateUserProfile(name, photoURL)
-                    .then(result => {
-                        console.log(result);
+                    .then(() => {
                         toast.success("User Update Successfully")
-                        navigate("/")
-
+                        axiosPublic.post("/users", user)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    navigate("/")
+                                    toast.success("user add in database")
+                                }
+                            })
+                            .catch(error => console.log(error))
                     })
                     .catch(error => {
                         console.log(error);
@@ -79,8 +87,9 @@ const SignUp = () => {
                     </form>
                     <div className="text-center">
                         <p className="text-[#D1A054] font-medium ">Already  Registed? <Link to="/login"><span>go to login </span></Link></p>
-                        <p className="">Or sign up with </p>
+                        <HorizontalLine chars={15} />Or sign up with<HorizontalLine chars={15} />
 
+                        <div><GoogleLogin></GoogleLogin></div>
                     </div>
                 </div>
             </div>
