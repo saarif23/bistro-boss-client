@@ -27,7 +27,7 @@ const SignUp = () => {
                         console.log(result);
                         toast.success("User Update Successfully")
                         navigate("/")
-                        
+
                     })
                     .catch(error => {
                         console.log(error);

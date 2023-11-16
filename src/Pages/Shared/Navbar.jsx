@@ -2,8 +2,12 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../Hooks/useCart";
+
 
 const Navbar = () => {
+    const [cart] = useCart();
     const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogout = () => {
@@ -15,14 +19,19 @@ const Navbar = () => {
 
             .catch(error => console.log(error))
     }
-    const navOptions = <>
+    const navOptions = <div className="flex flex-col lg:flex-row items-center">
         <li><Link to="/">Home</Link></li>
         <li><Link to="">Contact Us</Link></li>
         <li><Link to="">Dashboard</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/ourShop">Our Shop</Link></li>
 
-    </>
+        <li><Link to="/">
+            <div className="flex">
+                <span className="text-2xl border border-yellow-400 p-2 rounded-full"> <FaCartShopping /></span> <span className="badge badge-secondary text-xs -ml-2">+{cart.length}</span>
+            </div>
+        </Link></li>
+    </div>
 
     return (
         <div className="navbar fixed z-10 bg-opacity-25 max-w-6xl  text-white bg-black">
