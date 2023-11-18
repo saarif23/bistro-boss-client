@@ -22,7 +22,7 @@ const Navbar = () => {
     const navOptions = <div className="flex flex-col lg:flex-row items-center">
         <li><Link to="/">Home</Link></li>
         <li><Link to="">Contact Us</Link></li>
-        <li><Link to="">Dashboard</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/ourShop">Our Shop</Link></li>
 

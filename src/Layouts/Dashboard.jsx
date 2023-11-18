@@ -1,18 +1,23 @@
-import { FaBook, FaHistory, FaHome, FaList, FaUsers } from "react-icons/fa";
-import { FaBookBible, FaCalendar, FaCartShopping, FaShop, FaStreetView } from "react-icons/fa6";
-import { ImSpoonKnife } from "react-icons/im";
+import { FaBook, FaHome, FaList, FaUsers } from "react-icons/fa";
+import { FaBookBible, FaCalendar, FaCartShopping, FaShop, } from "react-icons/fa6";
 import { MdEmail, MdPayment, MdRateReview } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
+import { ImSpoonKnife } from "react-icons/im";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
+    // const isAdmin = false
+
     return (
         <div className="flex ">
             {/* dashboard side bar  */}
             <div className="bg-[#D1A054] min-h-screen w-[250px]">
                 <ul className="menu p-5 space-y-3">
                     {isAdmin ?
+
                         <>
                             <li>
                                 <NavLink to="/dashboard/cart">
@@ -28,14 +33,14 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard/cart">
-                                    <FaList/>
+                                    <FaList />
                                     Manage Item
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/cart">
-                                    <FaBook/>
-                                   Manage Bookings
+                                    <FaBook />
+                                    Manage Bookings
                                 </NavLink>
                             </li>
                             <li>
@@ -44,7 +49,7 @@ const Dashboard = () => {
                                     All Users
                                 </NavLink>
                             </li>
-                                                 </>
+                        </>
                         :
                         <>
                             <li>

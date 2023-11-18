@@ -1,19 +1,65 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Title from "../Title";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Users = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
             const res = await axiosSecure.get("/users")
-            return res.data
+            return res.data;
         }
     })
-    const handleDelete = () => {
-        console.log("object");
+    const handleMakeAdmin = (user) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to admin this user !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/admin/${user._id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.modifiedCount > 0) {
+                            toast.success(`${user?.name} is admin now`)
+                        }
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/users/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            toast.success("Delete user  Successfully")
+                        }
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
     }
 
     return (
@@ -54,9 +100,12 @@ const Users = () => {
                             <td>
                                 <p>{user.email}</p>
                             </td>
-                            <td> {}</td>
+                            <td>
+                                {/* {user?.role === "user" && <FaUsers></FaUsers>} */}
+                                {user.role === 'admin' ? <p className="font-bold text-[#D1A054]">admin</p> : <button onClick={() => handleMakeAdmin(user)} className="bg-[#D1A054] text-white p-2 text-2xl rounded-md"><FaUsers></FaUsers></button>}
+                            </td>
                             <th>
-                                <button onClick={() => handleDelete(user._id)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                                <button onClick={() => handleDelete(user._id)} className=" bg-red-600 text-2xl p-2 text-white rounded-md"><FaTrash></FaTrash></button>
                             </th>
                         </tr>)}
 

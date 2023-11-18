@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const Cart = () => {
     const axiosSecure = useAxiosSecure();
     const [cart, refetch] = useCart();
-    console.log(cart);
+    // console.log(cart);
 
     const handleDelete = (id) => {
         Swal.fire({
