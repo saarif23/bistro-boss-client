@@ -9,6 +9,14 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Pages/Dashborad/Cart";
 import Users from "../Components/DashboardComponents/Users";
+import AddItems from "../Pages/Dashborad/AddItems/AddItems";
+import AdminRoute from "./AdminRoute";
+import ManageItem from "../Pages/Dashborad/ManageItem/ManageItem";
+import UpdateItem from "../Pages/Dashborad/UpdateItem/UpdateItem";
+import Payment from "../Pages/Dashborad/Payment/Payment";
+import PaymentHisroty from "../Pages/Dashborad/PaymentHistroy/PaymentHisroty";
+
+
 
 
 const Routes = createBrowserRouter([
@@ -50,8 +58,29 @@ const Routes = createBrowserRouter([
                 path: "cart",
                 element: <Cart></Cart>
             },
+            {
+                path: "payment",
+                element: <Payment></Payment>
+            },
+            {
+                path: "paymentHistory",
+                element: <PaymentHisroty></PaymentHisroty>
+            },
 
             // Admin route
+            {
+                path: "addItems",
+                element: <AdminRoute><AddItems></AddItems></AdminRoute>
+            },
+            {
+                path: "manageItem",
+                element: <AdminRoute><ManageItem></ManageItem></AdminRoute>
+            },
+            {
+                path: "updateItem/:id",
+                element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`)
+            },
             {
                 path: "users",
                 element: <Users></Users>

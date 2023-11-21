@@ -1,14 +1,16 @@
-import { FaBook, FaHome, FaList, FaUsers } from "react-icons/fa";
+import { FaBook, FaEdit, FaHome, FaList, FaUsers } from "react-icons/fa";
 import { FaBookBible, FaCalendar, FaCartShopping, FaShop, } from "react-icons/fa6";
 import { MdEmail, MdPayment, MdRateReview } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import { ImSpoonKnife } from "react-icons/im";
+import useCart from "../Hooks/useCart";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
+    const [cart, refetch] = useCart();
+    // console.log(isAdmin);
     // const isAdmin = false
 
     return (
@@ -26,13 +28,13 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/cart">
+                                <NavLink to="/dashboard/addItems">
                                     <ImSpoonKnife />
                                     Add Items
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/cart">
+                                <NavLink to="/dashboard/manageItem">
                                     <FaList />
                                     Manage Item
                                 </NavLink>
@@ -65,7 +67,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/cart">
+                                <NavLink to="/dashboard/paymentHistory">
                                     <MdPayment></MdPayment>
                                     Payment History
                                 </NavLink>
@@ -73,7 +75,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/cart">
                                     <FaCartShopping></FaCartShopping>
-                                    My Cart
+                                    My Cart ({cart.length})
                                 </NavLink>
                             </li>
                             <li>

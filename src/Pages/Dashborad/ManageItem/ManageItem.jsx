@@ -1,17 +1,16 @@
-import { FaTrash } from "react-icons/fa6";
-import Title from "../../Components/Title";
-import useCart from "../../Hooks/useCart";
+import { FaTrash } from "react-icons/fa";
+import Title from "../../../Components/Title";
+import useMenu from "../../../Hooks/useMenu";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const ManageItem = () => {
+    const [menu, , refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
-    const [cart, refetch] = useCart();
-    // console.log(cart);
-
-    const handleDelete = (id) => {
+    const handleDeleteItem = (item) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -22,53 +21,48 @@ const Cart = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/carts/${id}`)
+                axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
+                        // console.log(res.data);
+
                         if (res.data.deletedCount > 0) {
-                            toast.success("Delete Item  Successfully")
+                            toast.success(`${item.name}Delete Successfully`)
+                            refetch();
                         }
-                        refetch();
                     })
                     .catch(error => console.log(error))
             }
         });
     }
-    const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
-
-
 
     return (
         <div>
             <Title
-                subHeading={"My Cart"}
-                heading={'Wanna Add More'}
+                subHeading={"Hurry Up"}
+                heading={'Manage All Items'}
             ></Title>
 
-            <div className="overflow-x-auto bg-white p-5">
+            <div className=" bg-white p-5">
                 <div className="flex justify-between items-center ">
-                    <h3 className="text-3xl font-semibold py-5">Total Bookings {cart.length}</h3>
-                    <h3 className="text-3xl font-semibold py-5">Total Price : $ {totalPrice} </h3>
-                    {cart.length
-                        ? <Link to="/dashboard/payment"> < button className="btn btn-sm bg-[#D1A054] text-white">Pay</button></Link>
-                        :
-                        < button disabled className="btn btn-sm bg-[#D1A054] text-white">Pay</button>}
+                    <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div>
-                <table className="table">
+                <table className="table ">
                     {/* head */}
-                    <thead>
-                        <tr className="bg-[#D1A054] text-white ">
-                            <th></th>
+                    <thead className="bg-[#D1A054] ">
+                        <tr className="  text-white">
+                            <th> #</th>
                             <th>ITE4M IMAGE</th>
                             <th>ITEM NAME</th>
                             <th>PRICE</th>
-                            <th>ACTION</th>
+                            <th>UPDATE</th>
+                            <th>DELETE</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {/* row 1 */}
-                        {cart.map((item, index) => <tr key={item._id}>
+                        {menu.map((item, index) => <tr key={item._id}>
                             <td>
                                 {index + 1}
                             </td>
@@ -86,7 +80,10 @@ const Cart = () => {
                             </td>
                             <td>$ {item.price}</td>
                             <th>
-                                <button onClick={() => handleDelete(item._id)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                                <Link to={`/dashboard/updateItem/${item._id}`}>  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaRegPenToSquare /></button></Link>
+                            </th>
+                            <th>
+                                <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
                             </th>
                         </tr>)}
 
@@ -95,8 +92,8 @@ const Cart = () => {
 
                 </table>
             </div>
-        </div >
+        </div>
     );
 };
 
-export default Cart;
+export default ManageItem;
