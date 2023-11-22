@@ -4,11 +4,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const Navbar = () => {
     const [cart] = useCart();
     const { user, logout } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
     const navigate = useNavigate();
     const handleLogout = () => {
         logout()
@@ -22,7 +24,11 @@ const Navbar = () => {
     const navOptions = <div className="flex flex-col lg:flex-row items-center">
         <li><Link to="/">Home</Link></li>
         <li><Link to="">Contact Us</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+
+        {user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>}
+        {user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>}
+
+        
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/ourShop">Our Shop</Link></li>
 

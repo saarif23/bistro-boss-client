@@ -9,7 +9,7 @@ import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    const [cart, refetch] = useCart();
+    const [cart] = useCart();
     // console.log(isAdmin);
     // const isAdmin = false
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
 
                         <>
                             <li>
-                                <NavLink to="/dashboard/cart">
+                                <NavLink to="/dashboard/adminHome">
                                     <FaHome></FaHome>
                                     Admin Home
                                 </NavLink>
@@ -55,7 +55,7 @@ const Dashboard = () => {
                         :
                         <>
                             <li>
-                                <NavLink to="/dashboard/cart">
+                                <NavLink to="/dashboard/userHome">
                                     <FaHome></FaHome>
                                     User Home
                                 </NavLink>
