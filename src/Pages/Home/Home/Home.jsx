@@ -5,20 +5,19 @@ import Factures from "../Factures";
 import PopularMenu from "../PopularMenu";
 import Reviews from "../Reviews";
 
-
 const Home = () => {
-    return (
-        <div>
-            <Helmet>
-                <title>Bistro Boos || Home</title>
-            </Helmet>
-            <Banner></Banner>
-            <Category></Category>
-            <PopularMenu></PopularMenu>
-            <Factures></Factures>
-            <Reviews></Reviews>
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Bistro Boos || Home</title>
+      </Helmet>
+      <Banner></Banner>
+      <Category></Category>
+      <PopularMenu></PopularMenu>
+      <Factures></Factures>
+      <Reviews></Reviews>
+    </div>
+  );
 };
 
 export default Home;
