@@ -1,0 +1,50 @@
+[
+    {
+        "pet_category": "Dog",
+        "category_image": "https://i.ibb.co/t3pF7CX/docs.png"
+    },
+    {
+        "pet_category": "Cat",
+        "category_image": "https://i.ibb.co/LvHL3y1/cat.png"
+    },
+    {
+        "pet_category": "Bird",
+        "category_image": "https://i.ibb.co/P5hZLHR/bird.png"
+    },
+    {
+        "pet_category": "Fish",
+        "category_image": "https://i.ibb.co/DRWyK7q/Fish.png"
+    },
+    {
+        "pet_category": "Reptile",
+        "category_image": "https://i.ibb.co/bNB0NRz/Reptiles.png"
+    },
+    {
+        "pet_category": "Small_Mammal",
+        "category_image": "https://i.ibb.co/X862CvD/Small-Mammals-2.png"
+    },
+    {
+        "pet_category": "Horse",
+        "category_image": "https://i.ibb.co/wWqNfWn/Horse.png"
+    },
+    {
+        "pet_category": "Exotic_Pet",
+        "category_image": "https://i.ibb.co/mvzGVR2/Exotic-Pets.png"
+    },
+    {
+        "pet_category": "Farm_Animal",
+        "category_image": "https://i.ibb.co/17Lq2zp/Farm-Animals.png"
+    },
+    {
+        "pet_category": "Insect",
+        "category_image": "https://i.ibb.co/qkVBrbj/Insept.png"
+    },
+    {
+        "pet_category": "Rabbit",
+        "category_image": "https://i.ibb.co/m4HSWCY/Rabbit.png"
+    }
+   
+]
+
+
+

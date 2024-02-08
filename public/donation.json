@@ -1,0 +1,62 @@
+[
+    {
+        "pet_name": "Fluffy",
+        "pet_image": "https://i.ibb.co/NLG4zkV/rabbits2.jpg",
+        "maximum_donation_amount": 1000,
+        "donated_amount": 750
+    },
+    {
+        "pet_name": "Buddy",
+        "pet_image": "https://i.ibb.co/VTXbD31/white.jpg",
+        "maximum_donation_amount": 800,
+        "donated_amount": 300
+    },
+    {
+        "pet_name": "Whiskers",
+        "pet_image": "https://i.ibb.co/1mS7Gw6/cat10.jpg",
+        "maximum_donation_amount": 1200,
+        "donated_amount": 900
+    },
+    {
+        "pet_name": "Rex",
+        "pet_image": "https://i.ibb.co/PTK6w5K/dog3.jpg",
+        "maximum_donation_amount": 1500,
+        "donated_amount": 600
+    },
+    {
+        "pet_name": "Mittens",
+        "pet_image": "https://i.ibb.co/Ntc0mR6/dog.jpg",
+        "maximum_donation_amount": 900,
+        "donated_amount": 450
+    },
+    {
+        "pet_name": "Gizmo",
+        "pet_image": "https://i.ibb.co/t49KRm4/dengerious.jpg",
+        "maximum_donation_amount": 1100,
+        "donated_amount": 800
+    },
+    {
+        "pet_name": "Max",
+        "pet_image": "https://i.ibb.co/fXzc8GM/rabbits7.jpg",
+        "maximum_donation_amount": 1300,
+        "donated_amount": 700
+    },
+    {
+        "pet_name": "Luna",
+        "pet_image": "https://i.ibb.co/C7Jyx6y/rabbits5.jpg",
+        "maximum_donation_amount": 1000,
+        "donated_amount": 200
+    },
+    {
+        "pet_name": "Charlie",
+        "pet_image": "https://i.ibb.co/NLG4zkV/rabbits2.jpg",
+        "maximum_donation_amount": 1800,
+        "donated_amount": 1200
+    },
+    {
+        "pet_name": "Oliver",
+        "pet_image": "https://i.ibb.co/QMKw3GD/cat6.jpg",
+        "maximum_donation_amount": 1600,
+        "donated_amount": 1100
+    }
+]
