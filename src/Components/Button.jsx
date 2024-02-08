@@ -1,8 +1,10 @@
-
+/* eslint-disable react/prop-types */
 const Button = ({ btnText }) => {
-    return (
-        <button className="uppercase border-b-4 bg-gray-200 border-orange-400  rounded-xl px-5 py-2 shadow-lg">{btnText}</button>
-    );
+  return (
+    <div className="uppercase border-b-4 mx-auto text-center font-semibold hover:animate-pulse  w-60 border-black hover:bg-black hover:text-white  rounded-xl px-5 py-2 shadow-lg">
+      {btnText}
+    </div>
+  );
 };
 
 export default Button;

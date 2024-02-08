@@ -1,6 +1,7 @@
 import MenuCard from "../Shared/MenuCard";
 import Title from "../../Components/Title";
 import useMenu from "../../Hooks/useMenu";
+import Button from "../../Components/Button";
 
 const PopularMenu = () => {
 
@@ -18,6 +19,10 @@ const PopularMenu = () => {
                     popularMenu.map(item => <MenuCard key={item._id} item={item}></MenuCard>)
                 }
 
+            </div>
+            <Button btnText={"View All Menu"}></Button>
+            <div className="bg-black h-[200px] mt-10 text-center text-white text-4xl font-semibold pt-16">
+            Call Us: +88 0192345678910
             </div>
         </section>
     );

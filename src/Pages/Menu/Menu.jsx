@@ -62,6 +62,18 @@ const Menu = () => {
                 items={soups}
                 menuBg={'https://i.ibb.co/WcLszH0/soup-bg.jpg'}
             ></MenuCategory>
+            <MenuCategory
+                heading="soup"
+                subHeading={'Desserts can be defined as a usually sweeter course that concludes a meal. This definition includes a range of courses ranging from fruits or dried nuts to multi-ingredient cakes and pies. Many cultures have different variations of dessert.'}
+                items={soups}
+                menuBg={'https://i.ibb.co/WcLszH0/soup-bg.jpg'}
+            ></MenuCategory>
+            <MenuCategory
+                heading="soup"
+                subHeading={'Desserts can be defined as a usually sweeter course that concludes a meal. This definition includes a range of courses ranging from fruits or dried nuts to multi-ingredient cakes and pies. Many cultures have different variations of dessert.'}
+                items={soups}
+                menuBg={'https://i.ibb.co/WcLszH0/soup-bg.jpg'}
+            ></MenuCategory>
 
 
 
